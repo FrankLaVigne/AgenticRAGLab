@@ -8,6 +8,7 @@ Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realis
 
 | Section | Directory | Topic |
 |---------|-----------|-------|
+| 00 | `00_Setup/` | Orientation, environment setup, and workbench configuration |
 | 01 | `01_WhyPassiveRAGBreaks/` | Analyze the 4 failures the Escalation Lab could not fix — classify them as irrelevant retrieval, implicit reasoning, or out-of-scope |
 | 02 | `02_TheAgentLoop/` | Build the agent loop: retrieval evaluation, query rewriting, and a decide-before-answering control structure |
 
@@ -54,7 +55,7 @@ Agentic:    Question → Retrieve → Evaluate → Decide
 
 2. Install dependencies within the notebooks as needed (each notebook installs its own requirements).
 
-3. Work through the notebooks in order, starting with `01_WhyPassiveRAGBreaks/01_Why_Passive_RAG_Breaks.ipynb`.
+3. Work through the notebooks in order, starting with `00_Setup/00_Setup_and_Orientation.ipynb`.
 
 4. If you did not complete the Escalation Lab, each notebook includes a pre-built fallback cell that loads saved outputs so you can follow along without live execution.
 
@@ -73,6 +74,8 @@ AgenticRAGLab/
 ├── README.md
 ├── prebuilt/                      # Pre-generated results for offline use
 │   └── eval_results.json          # Baseline evaluation from the Escalation Lab
+├── 00_Setup/                      # Section 00
+│   └── 00_Setup_and_Orientation.ipynb
 ├── 01_WhyPassiveRAGBreaks/        # Section 01
 │   └── 01_Why_Passive_RAG_Breaks.ipynb
 └── 02_TheAgentLoop/               # Section 02
