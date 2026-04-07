@@ -11,6 +11,10 @@ Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realis
 | 00 | `00_Setup/` | Orientation, environment setup, and workbench configuration |
 | 01 | `01_WhyPassiveRAGBreaks/` | Analyze the 4 failures the Escalation Lab could not fix — classify them as irrelevant retrieval, implicit reasoning, or out-of-scope |
 | 02 | `02_TheAgentLoop/` | Build the agent loop: retrieval evaluation, query rewriting, and a decide-before-answering control structure |
+| 03 | `03_DefiningTools/` | Define three callable tools (retrieval, calculator, no-answer) and demonstrate that tool selection quality depends on description quality |
+| 04 | `04_RunningTheAgentLoop/` | Wire tools to the model, trace a full reasoning chain, and run all 10 evaluation questions through the agent loop |
+| 05 | `05_Evaluation/` | Score the agent loop on two dimensions — answer correctness and reasoning correctness — using a 2x2 reliability matrix |
+| 06 | `06_Synthesis/` | Facilitated discussion: when is an agent loop justified, and where does it sit on the escalation ladder? |
 
 ## The Core Argument
 
@@ -72,14 +76,30 @@ Agentic:    Question → Retrieve → Evaluate → Decide
 ```
 AgenticRAGLab/
 ├── README.md
+├── config.py                      # Shared config — loads .env and exposes credentials
+├── .gitignore
+├── docs/                          # Source documents (Basic Fantasy RPG PDF)
+├── utils/
+│   └── check_environment.ipynb    # Environment verification notebook
 ├── prebuilt/                      # Pre-generated results for offline use
-│   └── eval_results.json          # Baseline evaluation from the Escalation Lab
+│   ├── README.md
+│   ├── eval_results.json          # Baseline evaluation from the Escalation Lab
+│   ├── tool_definitions.json      # Tool schemas generated in Section 3
+│   └── agent_loop_results.json    # Agent loop results from Section 4
 ├── 00_Setup/                      # Section 00
 │   └── 00_Setup_and_Orientation.ipynb
 ├── 01_WhyPassiveRAGBreaks/        # Section 01
 │   └── 01_Why_Passive_RAG_Breaks.ipynb
-└── 02_TheAgentLoop/               # Section 02
-    └── 02_The_Agent_Loop.ipynb
+├── 02_TheAgentLoop/               # Section 02
+│   └── 02_The_Agent_Loop.ipynb
+├── 03_DefiningTools/              # Section 03
+│   └── 03_Defining_Tools.ipynb
+├── 04_RunningTheAgentLoop/        # Section 04
+│   └── 04_Running_the_Agent_Loop.ipynb
+├── 05_Evaluation/                 # Section 05
+│   └── 05_Evaluation.ipynb
+└── 06_Synthesis/                  # Section 06
+    └── 06_Synthesis.ipynb
 ```
 
 ## Connection to the Escalation Lab
