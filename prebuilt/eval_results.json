@@ -1,0 +1,202 @@
+{
+  "metadata": {
+    "source_document": "multi-document corpus",
+    "model": "granite-3-2-8b-instruct",
+    "chunking": {
+      "strategy": "markdown_aware",
+      "chunk_size": 1000,
+      "overlap": 200,
+      "total_chunks": 4732,
+      "description": "Splits on markdown headings first, then paragraph breaks, then word boundaries as a fallback."
+    },
+    "embedding_model": "ibm-granite/granite-embedding-30m-english",
+    "retrieval": {
+      "n_results": 3,
+      "similarity": "cosine"
+    },
+    "generated_on": "day2_section_6.11",
+    "note": "Captured at the end of Day 2 using the multi-document RAG pipeline built in Section 6. This is the baseline for Day 3."
+  },
+  "results": [
+    {
+      "id": "q01",
+      "question": "What happens if a Thief fails an Open Locks attempt?",
+      "expected": "The Thief must wait until gaining another level of experience before trying again. It may only be tried once per lock.",
+      "category": "explicit_rule",
+      "answer": "If a Thief fails an Open Locks attempt, they must wait until they have gained another level of experience before trying again.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.17259907722473145,
+        0.17259907722473145,
+        0.17259907722473145
+      ],
+      "classification": "pass"
+    },
+    {
+      "id": "q02",
+      "question": "Why can't Elves roll higher than a d6 for hit points?",
+      "expected": "Elves use a d6 for hit points because that is the hit die assigned to the Elf combination class in Basic Fantasy RPG.",
+      "category": "terminology",
+      "answer": "According to the provided context, Elves never roll larger than six-sided dice (d6) for hit points. The reason for this restriction is not explicitly stated in the context.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r142.pdf",
+        "Basic-Fantasy-RPG-Rules-r142.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf"
+      ],
+      "distances": [
+        0.2227497696876526,
+        0.24537581205368042,
+        0.2881550192832947
+      ],
+      "classification": "implicit_reasoning_failure"
+    },
+    {
+      "id": "q03",
+      "question": "Can a character wear leather armor and cast spells?",
+      "expected": "Magic-Users and Elves cannot cast spells while wearing armor. Clerics can wear armor and cast spells.",
+      "category": "implicit_reasoning",
+      "answer": "Yes, according to the provided context, characters who can cast spells may wear leather armor.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.17295587062835693,
+        0.17295587062835693,
+        0.17295587062835693
+      ],
+      "classification": "pass"
+    },
+    {
+      "id": "q04",
+      "question": "What is the saving throw for a 3rd level Fighter against Dragon Breath?",
+      "expected": "Based on the Fighter saving throw table, a 3rd level Fighter has a Dragon Breath saving throw of 15.",
+      "category": "table_lookup",
+      "answer": "The context does not provide specific information on the saving throw for a 3rd level Fighter against Dragon Breath. However, it does mention that characters may make a save vs. Dragon Breath for half damage. The exact saving throw (e.g., Strength, Dexterity, etc.) is not specified in the provided context.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.20170193910598755,
+        0.20170193910598755,
+        0.20170193910598755
+      ],
+      "classification": "implicit_reasoning_failure"
+    },
+    {
+      "id": "q05",
+      "question": "How does a Cleric turn undead?",
+      "expected": "The Cleric rolls 2d6 and compares the result to the Turn Undead table. Success depends on the Cleric's level and the type of undead.",
+      "category": "multi_step_rule",
+      "answer": "To turn undead, the GM looks up the Cleric's level on the Clerics vs. Undead table and cross-references it with the undead type or Hit Dice. If the table indicates 'No' for that combination, it is not possible for the Cleric to affect that type of undead monster. If the table gives a number, that is the minimum number needed on 1d20 to Turn that sort of undead. If the table says 'T' for that combination, that type of undead is automatically affected (no roll needed). If the result shown is a 'D,' then that sort of undead will be Damaged (and possibly destroyed) rather than merely Turned. The player should always roll, even if the GM knows the character can't succeed (or can't fail), as telling the player whether or not to roll may reveal too much.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.1635875701904297,
+        0.1635875701904297,
+        0.1635875701904297
+      ],
+      "classification": "pass"
+    },
+    {
+      "id": "q06",
+      "question": "If a character has a Strength of 16, what bonus do they get on melee attack rolls?",
+      "expected": "A Strength score of 16 gives a +2 bonus, which applies to melee attack rolls and damage rolls.",
+      "category": "table_lookup",
+      "answer": "The provided context does not specify how Strength affects melee attack rolls. In Basic Fantasy RPG, it is recommended not to waste time in detailing the ability score or other statistics of characters further, implying that such specifics are not provided. Therefore, I cannot determine the melee attack bonus for a character with a Strength of 16 based on the given context.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.2507047653198242,
+        0.2507047653198242,
+        0.2507047653198242
+      ],
+      "classification": "implicit_reasoning_failure"
+    },
+    {
+      "id": "q07",
+      "question": "What is the difference between a retainer and a hireling?",
+      "expected": "Retainers are NPCs who accompany the party on adventures and gain experience. Hirelings are hired for specific non-adventuring tasks.",
+      "category": "terminology",
+      "answer": "In the Basic Fantasy RPG system, a retainer and a hireling are both types of NPCs that can be hired by player characters. However, the key difference lies in their loyalty and willingness to take risks.\n\nRetainers are close associates of their employer and are typically very loyal. They are willing to take reasonable risks, including accompanying a player character into dangerous places like dungeons, lairs, or ruins. Retainers are hired for a share of treasure (usually at least 15% of the employer's income) plus support costs, which include weapons, armor, rations, and basic equipment provided by the employer.\n\nOn the other hand, the context does not provide specific details about hirelings other than stating they are another category of NPCs available for hire. It can be inferred that hirelings might not be as loyal or willing to take risks as retainers, but the exact terms of their employment, such as payment and risk tolerance, are not specified in the provided context. Therefore, while retainers are described in detail, the distinction between retainers and hirelings beyond loyalty and risk tolerance is not explicitly stated.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.20823454856872559,
+        0.20823454856872559,
+        0.20823454856872559
+      ],
+      "classification": "implicit_reasoning_failure"
+    },
+    {
+      "id": "q08",
+      "question": "When can a Magic-User learn new spells?",
+      "expected": "A Magic-User can add spells to their spell book when gaining a level, and may also learn spells found during adventures at the GM's discretion.",
+      "category": "implicit_reasoning",
+      "answer": "A Magic-User can learn new spells at any point, but there are specific conditions. They must find a teacher or acquire a reference work, such as another Magic-User's spellbook. The cost of such learning is in addition to the transcription cost of 500 gp per spell level transcribed into their own spellbook. Often, a Magic-User will learn from their original master for free or in exchange for services. Two Magic-Users may also agree to exchange known spells. In cases where these options are not available, a Magic-User may need to pay another Magic-User (often an NPC) anywhere from 100 gp to 1000 gp per spell level for training. It's important to note that a Magic-User cannot learn or add spells of higher levels to their spellbook.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf"
+      ],
+      "distances": [
+        0.11951225996017456,
+        0.11951225996017456,
+        0.11951225996017456
+      ],
+      "classification": "pass"
+    },
+    {
+      "id": "q09",
+      "question": "What happens to a character at exactly 0 hit points?",
+      "expected": "When a character's hit point total reaches 0, the character may be dead. The rules note this may not be the end for the character.",
+      "category": "explicit_rule",
+      "answer": "When a character's hit point total reaches exactly 0, the character may be dead. However, this is not necessarily the end for the character; the character sheet should not be torn up.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r142.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107-lite.pdf"
+      ],
+      "distances": [
+        0.16363048553466797,
+        0.1849943995475769,
+        0.1849943995475769
+      ],
+      "classification": "pass"
+    },
+    {
+      "id": "q10",
+      "question": "Can a Halfling use a longbow?",
+      "expected": "Halflings may not use Large weapons and must use Medium weapons two-handed. A longbow is a Large weapon, so a Halfling cannot use one.",
+      "category": "implicit_reasoning",
+      "answer": "No, according to the provided context, Halflings may not use Large weapons, and longbows are typically around 6 feet unstrung, which would be considered a Large weapon for Halflings. Therefore, Halflings cannot use longbows.",
+      "sources": [
+        "Basic-Fantasy-RPG-Rules-r107-bookmarked.pdf",
+        "Basic-Fantasy-RPG-Rules-r107.pdf",
+        "EE1-Equipment-Emporium-r33.pdf"
+      ],
+      "distances": [
+        0.19538521766662598,
+        0.19538521766662598,
+        0.1961507797241211
+      ],
+      "classification": "pass"
+    }
+  ]
+}
