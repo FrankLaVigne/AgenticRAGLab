@@ -117,8 +117,10 @@ AgenticRAGLab/
 │   └── 04_Running_the_Agent_Loop.ipynb
 ├── 05_Evaluation/                 # Section 05
 │   └── 05_Evaluation.ipynb
-└── 06_Synthesis/                  # Section 06
-    └── 06_Synthesis.ipynb
+├── 06_Synthesis/                  # Section 06
+│   └── 06_Synthesis.ipynb
+└── extras/
+    └── WhatsNext.ipynb            # Post-lab guide: production concerns, further reading
 ```
 
 ## Connection to the Escalation Lab
