@@ -18,7 +18,7 @@ Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realis
 
 ## The Core Argument
 
-The Escalation Lab produced a RAG pipeline that answers 6 of 10 evaluation questions correctly. Best-of-N sampling and fine-tuning did not fix the remaining 4. Those failures are not model problems. They are architecture problems.
+The Escalation Lab produced a RAG pipeline that answers 8 of 10 evaluation questions correctly. Best-of-N sampling and fine-tuning did not fix the remaining 2. Those failures are not model problems. They are architecture problems.
 
 A passive pipeline always retrieves, always answers, and always moves on. It has no mechanism to:
 
