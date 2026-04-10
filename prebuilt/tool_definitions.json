@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "generated_by": "03_Defining_Tools.ipynb",
+    "tools_count": 3,
+    "tool_names": [
+      "rag_retrieval",
+      "calculator",
+      "no_answer"
+    ]
+  },
+  "tool_definitions": [
+    {
+      "type": "function",
+      "function": {
+        "name": "rag_retrieval",
+        "description": "Search the Basic Fantasy RPG rulebook corpus for text passages relevant to the query. Use this tool when the question asks about game rules, character classes, combat mechanics, spells, equipment, or any topic that would be answered by reading the rulebook. Returns the 3 most relevant text chunks with similarity scores.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to find relevant rulebook passages"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "calculator",
+        "description": "Evaluate a mathematical expression. Use this tool when the question requires arithmetic, probability calculation, or numeric computation that cannot be answered by reading text alone. Supports +, -, *, /, //, %, and ** operators. Example: '(16 - 10) // 2' for an ability score modifier calculation.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "expression": {
+              "type": "string",
+              "description": "A mathematical expression using numbers and basic arithmetic operators"
+            }
+          },
+          "required": [
+            "expression"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "no_answer",
+        "description": "Decline to answer the question. Use this tool when the question asks about something not covered in the Basic Fantasy RPG rulebook corpus, or when the available context is insufficient to provide a correct answer. Choosing this tool is better than guessing.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    }
+  ]
+}
