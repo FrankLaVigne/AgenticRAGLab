@@ -66,10 +66,19 @@ Agentic:    Question → Retrieve → Evaluate → Decide
 ## Key Technologies
 
 - **IBM Granite 3.2 8B Instruct** — Language model for generation
-- **Granite Embedding 30M English** — Local embedding model for semantic search
-- **ChromaDB** — In-process vector store
 - **OpenAI Python client** — Interface to MaaS endpoint
 - **Red Hat MaaS** — Model serving infrastructure
+- **Pure-Python TF-IDF retriever** — Lightweight retrieval over pre-chunked JSON (see note below)
+
+### Why no ChromaDB or embedding model?
+
+The original design called for ChromaDB with a local embedding model. We replaced it with a zero-dependency TF-IDF retriever backed by `prebuilt/bfrpg_chunks.json` for three reasons:
+
+1. **Workshop portability** — ChromaDB and sentence-transformers add heavy native dependencies that complicate setup on constrained environments (containers, shared JupyterHub instances).
+2. **The lab's point is the control structure, not the retriever.** Sections 1–2 demonstrate that the *architecture* around retrieval matters more than the retrieval engine itself. A simple retriever makes that argument more clearly.
+3. **Reproducibility** — Pre-chunked JSON is deterministic and version-controllable. No embedding drift, no index rebuild step.
+
+The retriever module (`retriever.py`) exposes the same `.query()` interface as ChromaDB, so swapping in a real vector store later requires changing only the import.
 
 ## Project Layout
 
@@ -80,10 +89,12 @@ AgenticRAGLab/
 ├── .gitignore
 ├── docs/                          # Source documents (Basic Fantasy RPG PDF)
 ├── utils/
-│   └── check_environment.ipynb    # Environment verification notebook
+│   ├── check_environment.ipynb    # Environment verification notebook
+│   └── retriever.py               # Pure-Python TF-IDF retriever (replaces ChromaDB)
 ├── prebuilt/                      # Pre-generated results for offline use
 │   ├── README.md
 │   ├── eval_results.json          # Baseline evaluation from the Escalation Lab
+│   ├── bfrpg_chunks.json          # Pre-chunked corpus passages for retrieval
 │   ├── tool_definitions.json      # Tool schemas generated in Section 3
 │   └── agent_loop_results.json    # Agent loop results from Section 4
 ├── 00_Setup/                      # Section 00
