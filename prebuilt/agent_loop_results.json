@@ -1,0 +1,413 @@
+{
+  "metadata": {
+    "generated_by": "04_Running_the_Agent_Loop.ipynb",
+    "model": "granite-3-2-8b-instruct",
+    "max_iterations": 3,
+    "tools": [
+      "rag_retrieval",
+      "calculator",
+      "no_answer"
+    ],
+    "total_questions": 10,
+    "agent_passes": 9
+  },
+  "results": [
+    {
+      "id": "q01",
+      "question": "What happens if a Thief fails an Open Locks attempt?",
+      "expected": "The Thief must wait until gaining another level of experience before trying again. It may only be tried once per lock.",
+      "category": "explicit_rule",
+      "passive_classification": "pass",
+      "agent_answer": "If a Thief fails an Open Locks attempt, they cannot try that particular lock again until they have gained at least one additional level of experience. This is to reflect the meaningful consequences of failure in the Thief abilities. The Game Master may also rule that the failed attempt has triggered the trap, depending on the nature of the trap.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "Thief fails Open Locks attempt"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "Thief fails Open Locks attempt",
+            "chunks": [
+              {
+                "text": "Open Locks: A Thief may attempt to open a lock given a set of thieves' picks and tools. The base chance of success is shown on the Thief Abilities table and improves with each level gained. To attempt to pick a lock, the Thief rolls percentile dice (d%); if the result is equal to or less than the listed percentage, the attempt succeeds and the lock opens. A Thief may only make one attempt per lock. If the attempt fails, the Thief may not try that particular lock again until he or she has gained at least one additional level of experience. It is important to note that magically held locks \u2014 such as those secured by Hold Portal or Wizard Lock \u2014 cannot be picked by a Thief at all; only the caster of the spell or a Dispel Magic can undo such locks. Normal locks, padlocks, and chest locks all fall within the scope of this ability. The Game Master may impose penalties to the roll for particularly complex or well-made locks, or grant bonuses for simple or cheap ones.",
+                "distance": 0.5087
+              },
+              {
+                "text": "Remove Traps: A Thief may attempt to disarm a trap once the trap has been located (typically through the Find Traps ability). The Thief rolls percentile dice and compares the result to the listed chance on the Thief Abilities table. Unlike Open Locks, a Thief may make up to two attempts to remove a particular trap. If the first attempt fails, the Thief may try once more. If both attempts fail, the Thief cannot try again until gaining at least one additional level of experience, in the same manner as failed Open Locks attempts. Additionally, on a failed second attempt, the GM may rule that the trap has been triggered by the bungled removal effort \u2014 the probability of this is up to the GM's judgment based on the trap's nature. This limitation on retries is consistent with the broader design of Thief abilities: failure has meaningful consequences, and advancement in level is the only path to a second chance.",
+                "distance": 0.5818
+              },
+              {
+                "text": "Thieves have a number of special abilities that set them apart from other character classes. These abilities improve as the Thief gains levels, as shown on the Thief Abilities table. The abilities are: Open Locks, Remove Traps, Pick Pockets, Move Silently, Climb Walls, Hide, and Listen. Percentile dice (d%) are rolled and the result compared against the listed percentage chance. For most abilities, a roll equal to or less than the listed percentage indicates success. Thieves using these abilities should generally do so secretly, with the Game Master rolling the dice and informing the player only of the outcome \u2014 not the roll itself \u2014 where appropriate. This preserves tension and prevents a player from knowing with certainty whether a trap has been properly disarmed or whether a pickpocketing attempt was detected. The Thief class represents the quintessential rogue archetype: skilled, stealthy, and opportunistic. Thieves wear leather armor and may use swords, daggers, and other light weapons. They advance using the Thief attack bonus table and use a d6 for hit points.",
+                "distance": 0.7724
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer conveys the same key facts as the EXPECTED answer, including the consequence of waiting for another level of experience and the potential for triggering a trap, which is a non-essential detail."
+    },
+    {
+      "id": "q02",
+      "question": "Why can't Elves roll higher than a d6 for hit points?",
+      "expected": "Elves use a d6 for hit points because that is the hit die assigned to the Elf combination class in Basic Fantasy RPG.",
+      "category": "terminology",
+      "passive_classification": "fail",
+      "agent_answer": "Elves use a d6 for hit points because they are a combination class, incorporating the abilities of both the Fighter and the Magic-User. The smaller hit die of the two component classes, a d6, is used by Elves, the same die used by Magic-Users. This is not a racial penalty but a design choice that reflects the broader capabilities of Elves. Fighters use a d8 for hit points, but Elves do not gain the Fighter's hardier constitution; the trade-off for their versatility is a reduced hit die. An Elf rolls 1d6 per level to determine hit points, adding any Constitution modifier to each roll. This progression continues through 9th level; after 9th level, Elves gain a flat 2 hit points per level rather than rolling, and Constitution modifiers no longer apply to hit point gains. This is the same pattern used by all demi-human classes in Basic Fantasy RPG.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "Elves hit points d6"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "Elves hit points d6",
+            "chunks": [
+              {
+                "text": "Elves are a combination class, incorporating the abilities of both the Fighter and the Magic-User. Because the Elf combines two classes into a single character type, it uses the smaller hit die of the two component classes: a d6, the same die used by Magic-Users. Fighters use a d8 for hit points, but the Elf does not gain the Fighter's hardier constitution \u2014 the trade-off for broader capabilities is a reduced hit die. An Elf rolls 1d6 per level to determine hit points, adding any Constitution modifier to each roll. This progression continues through 9th level; after 9th level, Elves gain a flat 2 hit points per level rather than rolling, and Constitution modifiers no longer apply to hit point gains. This is the same pattern used by all demi-human classes in Basic Fantasy RPG. The inability to roll higher than a d6 for hit points is therefore a direct consequence of the Elf being a combination class \u2014 it is the class's defined hit die, not a racial penalty.",
+                "distance": 0.7172
+              },
+              {
+                "text": "Each character class uses a specific hit die type to determine hit points at each level. Clerics, Thieves, and Elves use a d6. Fighters and Dwarves use a d8. Magic-Users use a d4. Halflings use a d6. At 1st level, a character rolls the appropriate die and adds any Constitution modifier to the result to determine starting hit points; if the total would be less than 1, the character begins with 1 hit point instead. At each subsequent level through 9th, the character rolls an additional hit die and adds the result plus the Constitution modifier to the running total. After 9th level, characters gain a flat number of hit points per level depending on their class (typically 1 or 2 points), and the Constitution modifier no longer applies. This design means that the maximum potential hit points for a character are shaped primarily by class, with Constitution providing incremental improvement at each level.",
+                "distance": 0.7295
+              },
+              {
+                "text": "Hit points represent a combination of physical toughness, combat skill, and the luck and instinct that keeps a veteran fighter alive. They are an abstraction of a character's ability to sustain and avoid injury in dangerous situations rather than a literal count of wounds. When a character takes damage from any source \u2014 a weapon hit, a spell, a trap, a fall \u2014 those hit points are subtracted from the character's current total. When the total reaches 0, the character is in mortal peril and may be dead. Lost hit points are recovered through rest: a character who rests for a full day without strenuous activity recovers 1d3 hit points, while a character doing light work recovers 1 hit point per day of rest. Magical healing restores hit points immediately. Hit points cannot be increased beyond the character's maximum total through healing \u2014 any excess healing is simply lost. Characters who are unconscious or incapacitated do not recover hit points through rest until they are stabilized.",
+                "distance": 0.8358
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly explains that Elves use a d6 for hit points due to their combination class status, incorporating abilities of both Fighter and Magic-User, and aligns with the EXPECTED answer's key fact."
+    },
+    {
+      "id": "q03",
+      "question": "Can a character wear leather armor and cast spells?",
+      "expected": "Magic-Users and Elves cannot cast spells while wearing armor. Clerics can wear armor and cast spells.",
+      "category": "implicit_reasoning",
+      "passive_classification": "fail",
+      "agent_answer": "A character cannot wear leather armor and cast spells simultaneously. According to the Basic Fantasy RPG rulebook, Magic-Users and Elves cannot cast spells while wearing any kind of armor, including leather armor. Clerics, on the other hand, can wear any type of armor and cast spells without restriction.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "leather armor spellcasting"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "leather armor spellcasting",
+            "chunks": [
+              {
+                "text": "Magic-Users may not wear armor of any type. This restriction applies at all times \u2014 a Magic-User cannot cast spells while wearing armor, and indeed may not wear armor even in situations where no spellcasting is planned. Elves share the restriction on casting spells in armor: an Elf wearing armor of any kind, including leather armor, cannot cast spells. An Elf may, however, choose to wear armor on a given day and simply not cast spells, or choose to go unarmored and cast freely \u2014 but the two cannot coexist in the same moment. This restriction applies to all arcane spellcasters and is not modified by armor type; leather armor imposes the same prohibition as plate mail. Clerics are a notable exception: they may wear any armor, including heavy armor and shields, and still cast their divine spells without restriction. Clerics are the only spellcasting class with no armor-related casting limitation.",
+                "distance": 0.6202
+              },
+              {
+                "text": "Elves are a combination class, having the abilities of both Fighters and Magic-Users. An Elf may fight in melee, wear armor, use any weapon, and also memorize and cast spells from the Magic-User spell list. However, an Elf may not cast spells while wearing armor of any kind \u2014 this includes leather armor. An Elf who wishes to cast spells must do so unarmored. In a given adventure, an Elf may fight in armor on some days and cast spells unarmored on other days, but cannot do both simultaneously. The weapons, armor, and other equipment available to an Elf are otherwise the same as those available to Fighters. Elves begin play able to memorize a single 1st-level spell. As with Magic-Users, Elves must rest and study to re-memorize spells each day. Elves also have several racial abilities, including the ability to detect hidden or secret doors more easily and immunity to the paralysis caused by ghouls.",
+                "distance": 0.887
+              },
+              {
+                "text": "Clerics may wear any type of armor and may carry shields. This is a significant advantage over the other spellcasting classes: unlike Magic-Users and Elves, Clerics suffer no restriction on casting spells while armored. A Cleric in full plate mail prays for spells and casts them in exactly the same way as a Cleric in robes would. However, Clerics are restricted in the weapons they may use. By the tenets of their religious calling, Clerics are forbidden from using edged or pointed weapons \u2014 weapons designed to cut or pierce. Clerics may use blunt weapons such as maces, war hammers, flails, and clubs. Clerics may also use slings for ranged combat. The prohibition against edged and pointed weapons applies regardless of the deity served; it is a universal feature of the Cleric class as presented in Basic Fantasy RPG. This means Clerics cannot use swords, daggers, spears, or bows. This weapon limitation is the primary trade-off for the Cleric's freedom to wear armor and cast divine spells without restriction.",
+                "distance": 0.9038
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly states that Magic-Users and Elves cannot cast spells while wearing armor, including leather, and that Clerics can wear armor and cast spells, aligning with the EXPECTED answer."
+    },
+    {
+      "id": "q04",
+      "question": "What is the saving throw for a 3rd level Fighter against Dragon Breath?",
+      "expected": "Based on the Fighter saving throw table, a 3rd level Fighter has a Dragon Breath saving throw of 15.",
+      "category": "table_lookup",
+      "passive_classification": "pass",
+      "agent_answer": "A 3rd level Fighter's saving throw against Dragon Breath is 15. This means the Fighter rolls 1d20 and needs to roll 15 or higher to successfully save against the Dragon Breath attack, typically reducing the damage taken by half.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "saving throw Fighter Dragon Breath"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "saving throw Fighter Dragon Breath",
+            "chunks": [
+              {
+                "text": "The following saving throw values apply to Clerics by level. To make a saving throw, the player rolls 1d20 and compares the result to the appropriate target number. A roll equal to or greater than the number is a success.\n\nCleric Saving Throws by Level:\nLevel 1\u20134: Death Ray or Poison 11, Magic Wands 12, Paralysis or Petrify 14, Dragon Breath 16, Spells 15.\nLevel 5\u20138: Death Ray or Poison 9, Magic Wands 10, Paralysis or Petrify 12, Dragon Breath 14, Spells 12.\nLevel 9\u201312: Death Ray or Poison 6, Magic Wands 7, Paralysis or Petrify 9, Dragon Breath 11, Spells 9.\n\nClerics have stronger saving throws than Fighters against Death Ray and Poison, reflecting their divine fortitude, but weaker saving throws against Dragon Breath. This makes a Cleric somewhat more vulnerable to breath weapon attacks than a Fighter of comparable level. For reference, a 1st\u20134th level Cleric needs a 16 to save against Dragon Breath, while a 1st\u20133rd level Fighter needs only a 15.",
+                "distance": 0.474
+              },
+              {
+                "text": "The following saving throw values apply to Fighters by level. To make a saving throw, the player rolls 1d20 and compares the result to the target number. A roll equal to or greater than the target number indicates success and the character avoids or reduces the effect.\n\nFighter Saving Throws by Level:\nLevel 1\u20133: Death Ray or Poison 12, Magic Wands 13, Paralysis or Petrify 14, Dragon Breath 15, Spells 16.\nLevel 4\u20136: Death Ray or Poison 10, Magic Wands 11, Paralysis or Petrify 12, Dragon Breath 13, Spells 14.\nLevel 7\u20139: Death Ray or Poison 8, Magic Wands 9, Paralysis or Petrify 10, Dragon Breath 10, Spells 12.\nLevel 10\u201312: Death Ray or Poison 6, Magic Wands 7, Paralysis or Petrify 8, Dragon Breath 8, Spells 10.\n\nAt 3rd level, a Fighter's saving throw target for Dragon Breath is 15. Rolling 15 or higher on 1d20 results in a successful save, typically meaning the character takes half damage from a dragon's breath weapon.",
+                "distance": 0.4828
+              },
+              {
+                "text": "Saving throws represent a character's ability to resist or partially avoid special attacks, harmful magic, and similar dangers through a combination of reflex, willpower, and constitution. When a character is subjected to such an effect, the player rolls 1d20 and compares the result to the target number listed on the appropriate saving throw table for that character's class and level. A result equal to or greater than the target number means the character has successfully resisted; a result below the target means the character suffers the full effect. Some effects allow a saving throw to reduce rather than negate damage \u2014 a dragon's breath, for instance, deals half damage on a successful save. There are five categories of saving throw used in Basic Fantasy RPG: Death Ray or Poison, Magic Wands, Paralysis or Petrify, Dragon Breath, and Spells. Different classes have different strengths and weaknesses across these five categories \u2014 a Fighter is particularly strong against Dragon Breath relative to other threats, while a Cleric excels at resisting Death and Poison. Ability score modifiers do not generally apply to saving throws, though Wisdom provides a bonus in some editions.",
+                "distance": 0.5629
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly conveys the key fact that a 3rd level Fighter has a Dragon Breath saving throw of 15, aligning with the EXPECTED answer."
+    },
+    {
+      "id": "q05",
+      "question": "How does a Cleric turn undead?",
+      "expected": "The Cleric rolls 2d6 and compares the result to the Turn Undead table. Success depends on the Cleric's level and the type of undead.",
+      "category": "multi_step_rule",
+      "passive_classification": "pass",
+      "agent_answer": "A Cleric can turn undead by rolling 2d6 and comparing the result to the number on the Turn Undead table, which is determined by the Cleric's level and the type of undead being turned. If the roll equals or exceeds the number on the table, the attempt succeeds. The number of undead creatures turned is equal to the roll, and they flee for 3d6 rounds, unable to attack or approach. \n\nHere's a simplified version of the Turn Undead table:\n\n- Cleric Level 1: 7, 9, 11, -, -, -, -, -, -\n- Cleric Level 2: 5, 7, 9, 11, -, -, -, -\n- Cleric Level 3: T, 5, 7, 9, 11, -, -, -\n- Cleric Level 4: T, T, 5, 7, 9, 11, -, -\n- Cleric Level 5: D, T, T, 5, 7, 9, 11, -\n- Cleric Level 6: D, D, T, T, 5, 7, 9, 11\n- Cleric Level 7: D, D, D, T, T, 5, 7, 9\n\nWhere 'T' means automatic turn, 'D' means the undead are destroyed, and '-' means the Cleric cannot turn that type of undead at that level. The table continues at higher levels, eventually allowing high-level Clerics to destroy even the most powerful undead automatically. \n\nClerics can use this ability at will without expending a spell.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "Cleric turn undead"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "Cleric turn undead",
+            "chunks": [
+              {
+                "text": "Clerics have the extraordinary ability to turn undead \u2014 to drive off or destroy undead creatures by channeling the power of their deity. Turning undead is not a spell and does not use a spell slot; it may be attempted at any time during play. To turn undead, the Cleric's player rolls 2d6 and compares the result to the number shown on the Turn Undead table, cross-referencing the Cleric's level with the type (Hit Dice) of undead being turned. If the roll equals or exceeds the number on the table, the attempt succeeds: 2d6 undead creatures of that type are turned and flee from the Cleric for 3d6 rounds, unable to attack or approach. If the table entry shows a 'T', the turning is automatic \u2014 no roll is required and the undead are turned regardless. If the entry shows a 'D', the undead are not merely turned but destroyed outright. If the entry shows a dash, the Cleric is not yet powerful enough to affect that type of undead.",
+                "distance": 0.4454
+              },
+              {
+                "text": "Turn Undead Table (roll 2d6; T = automatic turn, D = destroyed, \u2013 = cannot turn):\n\nUndead creature types and approximate Hit Dice: Skeleton (1/2 HD), Zombie (1 HD), Ghoul (2 HD), Wight (3 HD), Wraith (4 HD), Mummy (5 HD), Spectre (6 HD), Vampire (7 HD), Ghost (8 HD).\n\nCleric Level 1: 7, 9, 11, \u2013, \u2013, \u2013, \u2013, \u2013, \u2013\nCleric Level 2: 5, 7, 9, 11, \u2013, \u2013, \u2013, \u2013, \u2013\nCleric Level 3: T, 5, 7, 9, 11, \u2013, \u2013, \u2013, \u2013\nCleric Level 4: T, T, 5, 7, 9, 11, \u2013, \u2013, \u2013\nCleric Level 5: D, T, T, 5, 7, 9, 11, \u2013, \u2013\nCleric Level 6: D, D, T, T, 5, 7, 9, 11, \u2013\nCleric Level 7: D, D, D, T, T, 5, 7, 9, 11\n\nThe table continues at higher levels, eventually allowing high-level Clerics to destroy even the most powerful undead automatically. A 'T' result means no die roll is needed \u2014 the turning succeeds automatically.",
+                "distance": 0.7849
+              },
+              {
+                "text": "Clerics are holy warriors who serve a deity and combine combat skill with divine magic. They occupy a middle ground between the Fighter and the Magic-User: more physically capable than Magic-Users, able to wear any armor, but not quite as powerful in pure melee as Fighters. Clerics receive their spells through prayer and devotion to their deity. Unlike Magic-Users, Clerics do not study from a spell book; their spells are granted through divine will. A Cleric prays during a rest period and receives whatever spells are appropriate. Clerics may cast spells freely while wearing any armor, including full plate mail \u2014 there is no armor restriction for divine spellcasters. Clerics also possess the unique ability to turn undead, which can be used at will without expending a spell. Clerics use a d6 for hit points and advance using the Cleric attack bonus table, which is better than the Magic-User's but not as strong as the Fighter's.",
+                "distance": 0.8351
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly conveys the key facts of the EXPECTED answer, including the process of rolling 2d6, comparing the result to the Turn Undead table, and the success conditions based on the Cleric's level and the type of undead."
+    },
+    {
+      "id": "q06",
+      "question": "If a character has a Strength of 16, what bonus do they get on melee attack rolls?",
+      "expected": "A Strength score of 16 gives a +2 bonus, which applies to melee attack rolls and damage rolls.",
+      "category": "table_lookup",
+      "passive_classification": "pass",
+      "agent_answer": "The character gets a bonus of 3 on melee attack rolls.",
+      "iterations": 2,
+      "tools_used": [
+        "calculator"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "calculator",
+          "arguments": {
+            "expression": "(16 - 10) // 2"
+          },
+          "result": {
+            "tool": "calculator",
+            "expression": "(16 - 10) // 2",
+            "result": 3
+          }
+        }
+      ],
+      "agent_classification": "fail",
+      "judge_reason": "The actual answer is incorrect as a Strength score of 16 provides a +2 bonus, not 3."
+    },
+    {
+      "id": "q07",
+      "question": "What is the difference between a retainer and a hireling?",
+      "expected": "Retainers are NPCs who accompany the party on adventures and gain experience. Hirelings are hired for specific non-adventuring tasks.",
+      "category": "terminology",
+      "passive_classification": "pass",
+      "agent_answer": "A retainer in Basic Fantasy RPG is a henchman who accompanies the party on adventures, engages in combat, and can earn experience points and shares of treasure. The number of retainers a character can employ is determined by their Charisma score, and retainers have morale scores that can be influenced by the employer's actions.\n\nOn the other hand, a hireling is a specialist who is employed for professional expertise rather than general labor. Examples include Alchemists, Armorers, Engineers, Sages, Spies, and Sailors. Unlike retainers, hirelings do not accompany the party on adventures, do not engage in combat, do not earn experience points, and do not receive shares of treasure. They are hired for specific tasks such as repairing equipment, answering questions about lore, gathering intelligence, etc.\n\nIn summary, the key differences lie in their roles and involvement in adventures: retainers are active participants, while hirelings are not.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "difference between retainer and hireling Basic Fantasy RPG"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "difference between retainer and hireling Basic Fantasy RPG",
+            "chunks": [
+              {
+                "text": "The maximum number of retainers a character may employ at one time is determined by the character's Charisma score, as shown on the Charisma Modifiers table. A character with average Charisma (9\u201312) may typically employ up to four retainers. Each retainer also has a morale score, which is partially determined by the employer's Charisma modifier. Morale is checked during dangerous situations \u2014 typically when the first retainer is killed or when things are going badly for the party \u2014 to determine whether a retainer stands firm or flees. Retainers who survive adventures and receive fair pay tend to develop loyalty over time and may receive morale bonuses. Mistreating retainers \u2014 withholding earned pay, placing them in needlessly dangerous situations, or treating them poorly between adventures \u2014 can cause morale to fall, eventually causing the retainer to leave or even to act against their employer's interests. Retainers must be found through active recruitment, which typically involves advertising in a settlement and interviewing candidates; the GM may roleplay these negotiations.",
+                "distance": 0.7997
+              },
+              {
+                "text": "Specialists are a category of hireling who are employed for professional expertise rather than general or unskilled labor. Common specialist types listed in Basic Fantasy RPG include Alchemist, Armorer, Engineer, Sage, Spy, and Sailor, among others. Each specialist type has a standard monthly wage that reflects their expertise and rarity. Unlike retainers, specialists do not accompany the party on adventures, do not engage in combat, do not earn experience points, and do not receive shares of treasure. A specialist is hired for a defined purpose: an Armorer repairs and maintains equipment, a Sage answers difficult questions about lore, a Spy gathers intelligence. Availability of specialists depends on the size of the settlement \u2014 large cities are more likely to have specialists for hire than small villages. The GM determines whether a given specialist is available in a particular location. Specialists represent the non-adventuring support staff that higher-level characters may employ to maintain strongholds, conduct research, or manage other long-term projects.",
+                "distance": 0.9292
+              },
+              {
+                "text": "Each of the six ability scores \u2014 Strength, Intelligence, Wisdom, Dexterity, Constitution, and Charisma \u2014 is associated with a modifier ranging from \u20133 to +3. The modifier is determined by the score's range and is applied in specific circumstances tied to that ability. Strength modifiers apply to melee attack rolls and melee damage rolls. Intelligence modifiers affect the number of additional languages the character knows. Wisdom modifiers apply to saving throws against magical effects that target the mind. Dexterity modifiers apply to missile attack rolls, to the character's Armor Class, and to Initiative rolls. Constitution modifiers apply to each hit die roll when the character gains a level (through 9th level). Charisma modifiers affect NPC reactions, set the maximum number of retainers the character may employ, and influence retainer morale. These modifiers interact with different game systems, and knowing which ability affects which roll is fundamental to character creation and play.",
+                "distance": 0.9471
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly distinguishes between retainers and hirelings, explaining their roles, involvement in adventures, and the conditions under which they are employed, aligning with the EXPECTED answer."
+    },
+    {
+      "id": "q08",
+      "question": "When can a Magic-User learn new spells?",
+      "expected": "A Magic-User can add spells to their spell book when gaining a level, and may also learn spells found during adventures at the GM's discretion.",
+      "category": "implicit_reasoning",
+      "passive_classification": "pass",
+      "agent_answer": "A Magic-User can learn new spells in the following ways:\n\n1. **Leveling Up**: Each time a Magic-User gains a new level of experience, they may add one additional spell to their spell book for each level of spell they are now capable of casting. These newly added spells are assumed to have been researched and learned through continued study between adventures.\n\n2. **External Sources**: Magic-Users may learn spells from other sources such as scrolls discovered during adventures or spell books from other Magic-Users encountered in play. However, this is subject to the Game Master's discretion and may require the Magic-User to spend time, money, or other resources to successfully copy and learn a spell.\n\n3. **Spell Book**: Every Magic-User maintains a spell book, a handwritten record of all the spells they have learned. Without access to the spell book, a Magic-User cannot memorize new instances of their spells after resting. If the spell book is lost, the Magic-User must reconstruct it by finding and copying spells from scrolls, other spell books, or through research and practice.\n\nRemember, Intelligence is the key ability score for Magic-Users, affecting the number of languages known and, at the GM's option, the ability to learn particular spells.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "Magic-User learn new spells"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "Magic-User learn new spells",
+            "chunks": [
+              {
+                "text": "A Magic-User begins play knowing the spell Read Magic plus one additional 1st-level spell of the player's choice. These starting spells are recorded in the Magic-User's spell book. Each time a Magic-User gains a new level of experience, he or she may add one additional spell to the spell book for each level of spell the Magic-User is now capable of casting. These newly added spells are assumed to have been researched and learned through continued study between adventures. In addition to gaining spells upon leveling, a Magic-User may learn spells from other sources: spells found written on scrolls discovered during adventures, or spells from the spell books of other Magic-Users encountered in play. Adding spells from external sources is subject to the Game Master's discretion; the GM may require the Magic-User to spend time, money, or other resources to successfully copy and learn a spell. Not every spell found in the wild is guaranteed to be successfully learned.",
+                "distance": 0.6685
+              },
+              {
+                "text": "Every Magic-User maintains a spell book \u2014 a handwritten record of all the spells that Magic-User has learned. The spell book is not itself a magic item; it is the Magic-User's personal reference for re-memorizing spells. Without access to the spell book, a Magic-User cannot memorize new instances of their spells after resting; however, spells that were already memorized before the book was lost can still be cast as normal until expended. If the spell book is destroyed or permanently lost, the Magic-User must reconstruct it by finding and copying spells from scrolls, other spell books, or through research and practice. A standard spell book can hold approximately 100 pages of content; each spell occupies a number of pages equal to its spell level (so a 3rd-level spell takes 3 pages). Magic-Users are strongly advised to protect their spell books and, ideally, to maintain backup copies secured in a safe location away from the dungeon. Losing a spell book is one of the most significant setbacks a Magic-User can suffer.",
+                "distance": 0.8227
+              },
+              {
+                "text": "Magic-Users are arcane spellcasters, scholars of the mystic arts who have dedicated their lives to mastering the theory and practice of magic. They are potentially the most powerful characters in the game at high levels, but pay for that power with severe physical limitations at low levels. Magic-Users may not wear armor of any kind and are limited to small weapons such as daggers. Their attack bonus progression is the slowest of all character classes. A beginning Magic-User is quite fragile \u2014 low hit points, no armor, and only a single spell to cast before needing to rest. However, as the Magic-User advances in level, the spell list expands in both power and breadth. Magic-Users cast spells from memory; each spell slot holds one prepared spell, which is expended on casting. Intelligence is the key ability score for Magic-Users, as it affects the number of languages known and, at the GM's option, the ability to learn particular spells.",
+                "distance": 0.8514
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer provides a detailed explanation of when a Magic-User can learn new spells, aligning with the key facts in the EXPECTED answer."
+    },
+    {
+      "id": "q09",
+      "question": "What happens to a character at exactly 0 hit points?",
+      "expected": "When a character's hit point total reaches 0, the character may be dead. The rules note this may not be the end for the character.",
+      "category": "explicit_rule",
+      "passive_classification": "pass",
+      "agent_answer": "According to the Basic Fantasy RPG rulebook, a character who is reduced to exactly 0 hit points is at the point of death. The rules acknowledge this ambiguity: the Game Master may, at his or her option, rule that a character at exactly 0 hit points is unconscious or incapacitated rather than immediately dead. This gives the character's allies an opportunity to stabilize or heal them before death becomes permanent. However, this is optional, and by strict rules, reaching 0 hit points means the character may be dead. A character reduced below 0 hit points, to a negative number, is dead without ambiguity, with no possibility of optional survival unless the GM's house rules state otherwise. The GM should make clear to players before play begins which interpretation is in effect at their table.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "character at 0 hit points"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "character at 0 hit points",
+            "chunks": [
+              {
+                "text": "Any character who is reduced to 0 hit points is at the point of death. By the standard rules of Basic Fantasy RPG, a character whose hit points reach exactly 0 may be dead. The rules acknowledge this ambiguity: the Game Master may, at his or her option, rule that a character at exactly 0 hit points is unconscious or incapacitated rather than immediately dead \u2014 this is a common house rule that gives the character's allies an opportunity to stabilize or heal them before death becomes permanent. However, this is optional, and by strict rules, reaching 0 hit points means the character may be dead. A character reduced below 0 hit points \u2014 to a negative number \u2014 is dead without ambiguity, with no possibility of optional survival unless the GM's house rules state otherwise. The GM should make clear to players before play begins which interpretation is in effect at their table.",
+                "distance": 0.6231
+              },
+              {
+                "text": "Hit points represent a combination of physical toughness, combat skill, and the luck and instinct that keeps a veteran fighter alive. They are an abstraction of a character's ability to sustain and avoid injury in dangerous situations rather than a literal count of wounds. When a character takes damage from any source \u2014 a weapon hit, a spell, a trap, a fall \u2014 those hit points are subtracted from the character's current total. When the total reaches 0, the character is in mortal peril and may be dead. Lost hit points are recovered through rest: a character who rests for a full day without strenuous activity recovers 1d3 hit points, while a character doing light work recovers 1 hit point per day of rest. Magical healing restores hit points immediately. Hit points cannot be increased beyond the character's maximum total through healing \u2014 any excess healing is simply lost. Characters who are unconscious or incapacitated do not recover hit points through rest until they are stabilized.",
+                "distance": 0.7254
+              },
+              {
+                "text": "Each character class uses a specific hit die type to determine hit points at each level. Clerics, Thieves, and Elves use a d6. Fighters and Dwarves use a d8. Magic-Users use a d4. Halflings use a d6. At 1st level, a character rolls the appropriate die and adds any Constitution modifier to the result to determine starting hit points; if the total would be less than 1, the character begins with 1 hit point instead. At each subsequent level through 9th, the character rolls an additional hit die and adds the result plus the Constitution modifier to the running total. After 9th level, characters gain a flat number of hit points per level depending on their class (typically 1 or 2 points), and the Constitution modifier no longer applies. This design means that the maximum potential hit points for a character are shaped primarily by class, with Constitution providing incremental improvement at each level.",
+                "distance": 0.7655
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer accurately conveys the key facts from the EXPECTED answer, including the ambiguity of a character at exactly 0 hit points and the potential for the Game Master to rule on their status."
+    },
+    {
+      "id": "q10",
+      "question": "Can a Halfling use a longbow?",
+      "expected": "Halflings may not use Large weapons and must use Medium weapons two-handed. A longbow is a Large weapon, so a Halfling cannot use one.",
+      "category": "implicit_reasoning",
+      "passive_classification": "pass",
+      "agent_answer": "A Halfling cannot use a longbow due to their small size. The longbow is classified as a Large weapon, and Halflings are subject to weapon size restrictions. They are too big and unwieldy for a Halfling to use effectively. However, Halflings can use the shortbow, which is a Medium weapon and can be used with a two-handed grip. Despite their racial bonus to missile attack rolls, the longbow is not an option for Halflings.",
+      "iterations": 2,
+      "tools_used": [
+        "rag_retrieval"
+      ],
+      "trace": [
+        {
+          "iteration": 1,
+          "tool": "rag_retrieval",
+          "arguments": {
+            "query": "Halfling longbow usage"
+          },
+          "result": {
+            "tool": "rag_retrieval",
+            "query": "Halfling longbow usage",
+            "chunks": [
+              {
+                "text": "Halflings are small creatures and are subject to weapon size restrictions due to their stature of approximately 3 feet tall. Weapons in Basic Fantasy RPG are classified by size: Small, Medium, and Large. A Halfling may not use Large weapons under any circumstances \u2014 they are simply too big and unwieldy for a creature of that size. Large weapons include the longbow, the two-handed sword, polearms, and similarly oversized weapons. Medium weapons may be used by Halflings, but must be wielded two-handed rather than one-handed; a Halfling using a sword, for example, must use both hands to wield it effectively. Small weapons such as daggers are used normally by Halflings with no restriction. Because the longbow is classified as a Large weapon, a Halfling cannot use it under any circumstances. Halflings wishing to use a bow must rely on the shortbow, which is a Medium weapon and therefore available to Halflings when wielded two-handed. This restriction means that despite their racial bonus to missile attack rolls, Halflings are limited in which ranged weapons they may employ.",
+                "distance": 0.7409
+              },
+              {
+                "text": "Halflings are small demi-humans standing about 3 feet tall and typically weighing around 60 pounds. Despite their small size, they are surprisingly capable adventurers with several notable racial abilities. In outdoor settings \u2014 rural terrain, forests, fields \u2014 a Halfling not wearing metal armor can attempt to Hide with a base 90% chance of success, a substantially better rate than most characters. Halflings also receive a +1 bonus to all missile attack rolls, reflecting their exceptional hand-eye coordination and natural aptitude with thrown and ranged weapons. Additionally, Halflings receive a +1 bonus to all saving throws, making them slightly more resistant to a wide variety of dangers. Their small stature, however, places restrictions on the weapons and armor they can use; in particular, Halflings may not use Large weapons such as the longbow or two-handed sword. Halflings use a d6 for hit points, the same die as Clerics, Thieves, and Elves, and they advance using their own attack bonus and saving throw tables.",
+                "distance": 0.8751
+              },
+              {
+                "text": "Missile weapons are ranged weapons that include bows, crossbows, slings, and thrown weapons. Each missile weapon has three range increments \u2014 short, medium, and long \u2014 that determine accuracy modifiers. Attacks made against a target within short range receive a +1 bonus to the attack roll. Attacks at medium range are made with no modifier. Attacks at long range are made with a \u20131 penalty. The longbow is one of the most powerful missile weapons available: it has a range of 70 feet (short), 140 feet (medium), and 210 feet (long), and deals 1d6 damage. The shortbow has a shorter range of 50/100/150 feet and also deals 1d6 damage. Both bows fire once per round. Crossbows have greater range than shortbows but typically fire more slowly. The longbow requires two hands to use and is classified as a Large weapon, which has implications for which character races may wield it.",
+                "distance": 0.917
+              }
+            ]
+          }
+        }
+      ],
+      "agent_classification": "pass",
+      "judge_reason": "The ACTUAL answer correctly states that Halflings cannot use longbows due to their size and the weapon's classification as Large, aligning with the EXPECTED answer."
+    }
+  ]
+}
