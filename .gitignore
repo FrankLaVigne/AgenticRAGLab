@@ -6,6 +6,7 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+iframe_figures/
 
 # ChromaDB local store
 chroma_db/

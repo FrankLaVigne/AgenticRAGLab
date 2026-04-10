@@ -38,6 +38,14 @@ Agentic:    Question → Retrieve → Evaluate → Decide
                               irrelevant? → Abstain
 ```
 
+## What This Lab Does Not Cover
+
+The agent loop handles the abstain case correctly: when the corpus does not contain the answer, the system says so rather than hallucinating. But when the agent does answer, it does not surface which documents grounded that answer. In enterprise contexts, the ability to trace a generated response back to a specific source document is a compliance and governance asset, not just a debugging aid. Source provenance turns a black-box answer into an auditable one. A future extension of this lab would attach citations to the answer path, linking each claim to the chunk that supports it.
+
+The lab classifies retrieval failures as irrelevant retrieval, implicit reasoning, or out-of-scope, but it does not distinguish between a query that was poorly formed and a corpus that is incomplete or poorly chunked. Both produce weak retrieval, but they require different fixes. The agent loop addresses the query side through evaluation and rewriting. Corpus quality — whether the right information was ingested, whether chunks preserve the structure needed to answer multi-fact questions, whether tables survived the chunking process intact — is a separate concern that sits upstream of the agent loop and outside the scope of this lab.
+
+This lab intentionally keeps the model and retriever fixed and changes only the control structure. That is the right scope for demonstrating the agentic pattern in isolation. However, the production end-state for most enterprise deployments combines RAG with a fine-tuned model: fine-tuning handles deep domain fluency and consistent formatting, RAG handles real-time context and factual grounding. Neither alone is sufficient. This lab is one half of that architecture. The Escalation Lab covers the other half.
+
 ## Getting Started
 
 ### Prerequisites
