@@ -1,6 +1,6 @@
 # AgenticRAGLab
 
-A hands-on lab that picks up where the [EscalationLab](https://github.com/FrankLaVigne/EscalationLab) left off — building agentic control structures around RAG pipelines, governed by the same principle: **escalation of effort must be justified by evidence**.
+A hands-on lab that picks up where the [EscalationLab](https://github.com/FrankLaVigne/EscalationLab) left off, building agentic control structures around RAG pipelines, governed by the same principle: **escalation of effort must be justified by evidence**.
 
 Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realistic test domain to demonstrate why passive retrieve-then-answer pipelines break, and how an agent loop fixes the architectural gap without changing the model or the data.
 
@@ -9,11 +9,11 @@ Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realis
 | Section | Directory | Topic |
 |---------|-----------|-------|
 | 00 | `00_Setup/` | Orientation, environment setup, and workbench configuration |
-| 01 | `01_WhyPassiveRAGBreaks/` | Analyze the 4 failures the Escalation Lab could not fix — classify them as irrelevant retrieval, implicit reasoning, or out-of-scope |
+| 01 | `01_WhyPassiveRAGBreaks/` | Analyze the 4 failures the Escalation Lab could not fix; classify them as irrelevant retrieval, implicit reasoning, or out-of-scope |
 | 02 | `02_TheAgentLoop/` | Build the agent loop: retrieval evaluation, query rewriting, and a decide-before-answering control structure |
 | 03 | `03_DefiningTools/` | Define three callable tools (retrieval, calculator, no-answer) and demonstrate that tool selection quality depends on description quality |
 | 04 | `04_RunningTheAgentLoop/` | Wire tools to the model, trace a full reasoning chain, and run all 10 evaluation questions through the agent loop |
-| 05 | `05_Evaluation/` | Score the agent loop on two dimensions — answer correctness and reasoning correctness — using a 2x2 reliability matrix |
+| 05 | `05_Evaluation/` | Score the agent loop on two dimensions (answer correctness and reasoning correctness) using a 2x2 reliability matrix |
 | 06 | `06_Synthesis/` | Facilitated discussion: when is an agent loop justified, and where does it sit on the escalation ladder? |
 
 ## The Core Argument
@@ -42,7 +42,7 @@ Agentic:    Question → Retrieve → Evaluate → Decide
 
 The agent loop handles the abstain case correctly: when the corpus does not contain the answer, the system says so rather than hallucinating. But when the agent does answer, it does not surface which documents grounded that answer. In enterprise contexts, the ability to trace a generated response back to a specific source document is a compliance and governance asset, not just a debugging aid. Source provenance turns a black-box answer into an auditable one. A future extension of this lab would attach citations to the answer path, linking each claim to the chunk that supports it.
 
-The lab classifies retrieval failures as irrelevant retrieval, implicit reasoning, or out-of-scope, but it does not distinguish between a query that was poorly formed and a corpus that is incomplete or poorly chunked. Both produce weak retrieval, but they require different fixes. The agent loop addresses the query side through evaluation and rewriting. Corpus quality — whether the right information was ingested, whether chunks preserve the structure needed to answer multi-fact questions, whether tables survived the chunking process intact — is a separate concern that sits upstream of the agent loop and outside the scope of this lab.
+The lab classifies retrieval failures as irrelevant retrieval, implicit reasoning, or out-of-scope, but it does not distinguish between a query that was poorly formed and a corpus that is incomplete or poorly chunked. Both produce weak retrieval, but they require different fixes. The agent loop addresses the query side through evaluation and rewriting. Corpus quality (whether the right information was ingested, whether chunks preserve the structure needed to answer multi-fact questions, whether tables survived the chunking process intact) is a separate concern that sits upstream of the agent loop and outside the scope of this lab.
 
 This lab intentionally keeps the model and retriever fixed and changes only the control structure. That is the right scope for demonstrating the agentic pattern in isolation. However, the production end-state for most enterprise deployments combines RAG with a fine-tuned model: fine-tuning handles deep domain fluency and consistent formatting, RAG handles real-time context and factual grounding. Neither alone is sufficient. This lab is one half of that architecture. The Escalation Lab covers the other half.
 
@@ -73,18 +73,18 @@ This lab intentionally keeps the model and retriever fixed and changes only the 
 
 ## Key Technologies
 
-- **IBM Granite 3.2 8B Instruct** — Language model for generation
-- **OpenAI Python client** — Interface to MaaS endpoint
-- **Red Hat MaaS** — Model serving infrastructure
-- **Pure-Python TF-IDF retriever** — Lightweight retrieval over pre-chunked JSON (see note below)
+- **IBM Granite 3.2 8B Instruct**: Language model for generation
+- **OpenAI Python client**: Interface to MaaS endpoint
+- **Red Hat MaaS**: Model serving infrastructure
+- **Pure-Python TF-IDF retriever**: Lightweight retrieval over pre-chunked JSON (see note below)
 
 ### Why no ChromaDB or embedding model?
 
 The original design called for ChromaDB with a local embedding model. We replaced it with a zero-dependency TF-IDF retriever backed by `prebuilt/bfrpg_chunks.json` for three reasons:
 
-1. **Workshop portability** — ChromaDB and sentence-transformers add heavy native dependencies that complicate setup on constrained environments (containers, shared JupyterHub instances).
+1. **Workshop portability**: ChromaDB and sentence-transformers add heavy native dependencies that complicate setup on constrained environments (containers, shared JupyterHub instances).
 2. **The lab's point is the control structure, not the retriever.** Sections 1–2 demonstrate that the *architecture* around retrieval matters more than the retrieval engine itself. A simple retriever makes that argument more clearly.
-3. **Reproducibility** — Pre-chunked JSON is deterministic and version-controllable. No embedding drift, no index rebuild step.
+3. **Reproducibility**: Pre-chunked JSON is deterministic and version-controllable. No embedding drift, no index rebuild step.
 
 The retriever module (`retriever.py`) exposes the same `.query()` interface as ChromaDB, so swapping in a real vector store later requires changing only the import.
 
@@ -93,7 +93,7 @@ The retriever module (`retriever.py`) exposes the same `.query()` interface as C
 ```
 AgenticRAGLab/
 ├── README.md
-├── config.py                      # Shared config — loads .env and exposes credentials
+├── config.py                      # Shared config: loads .env and exposes credentials
 ├── .gitignore
 ├── docs/                          # Source documents (Basic Fantasy RPG PDF)
 ├── utils/
