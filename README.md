@@ -15,6 +15,7 @@ Uses the [Basic Fantasy RPG](https://www.basicfantasy.org/) rulebook as a realis
 | 04 | `04_RunningTheAgentLoop/` | Wire tools to the model, trace a full reasoning chain, and run all 10 evaluation questions through the agent loop |
 | 05 | `05_Evaluation/` | Score the agent loop on two dimensions (answer correctness and reasoning correctness) using a 2x2 reliability matrix |
 | 06 | `06_Synthesis/` | Facilitated discussion: when is an agent loop justified, and where does it sit on the escalation ladder? |
+| 07 | `07_Bonus_AgentLoopWithEmbeddings/` | **Bonus:** Swap the TF-IDF retriever for ChromaDB + Granite embeddings, re-run the same loop, and check whether the architectural pattern generalizes |
 
 ## The Core Argument
 
@@ -86,7 +87,7 @@ The original design called for ChromaDB with a local embedding model. We replace
 2. **The lab's point is the control structure, not the retriever.** Sections 1–2 demonstrate that the *architecture* around retrieval matters more than the retrieval engine itself. A simple retriever makes that argument more clearly.
 3. **Reproducibility**: Pre-chunked JSON is deterministic and version-controllable. No embedding drift, no index rebuild step.
 
-The retriever module (`retriever.py`) exposes the same `.query()` interface as ChromaDB, so swapping in a real vector store later requires changing only the import.
+The retriever module (`retriever.py`) exposes the same `.query()` interface as ChromaDB, so swapping in a real vector store later requires changing only the import. Section 07 (bonus) does exactly that. It re-runs the full agent loop with a ChromaDB + Granite-embedding retriever and compares results, so you can see the pattern generalize without taking it on faith.
 
 ## Project Layout
 
@@ -98,13 +99,16 @@ AgenticRAGLab/
 ├── docs/                          # Source documents (Basic Fantasy RPG PDF)
 ├── utils/
 │   ├── check_environment.ipynb    # Environment verification notebook
-│   └── retriever.py               # Pure-Python TF-IDF retriever (replaces ChromaDB)
+│   ├── retriever.py               # Pure-Python TF-IDF retriever (replaces ChromaDB)
+│   └── retriever_chroma.py        # Chroma + embedding retriever used by Section 7
 ├── prebuilt/                      # Pre-generated results for offline use
 │   ├── README.md
 │   ├── eval_results.json          # Baseline evaluation from the Escalation Lab
 │   ├── bfrpg_chunks.json          # Pre-chunked corpus passages for retrieval
 │   ├── tool_definitions.json      # Tool schemas generated in Section 3
-│   └── agent_loop_results.json    # Agent loop results from Section 4
+│   ├── agent_loop_results.json    # Agent loop results from Section 4 (TF-IDF)
+│   ├── agent_loop_embeddings_results.json  # Bonus run from Section 7 (embeddings)
+│   └── chroma_agentic/            # Persisted Chroma collection for Section 7
 ├── 00_Setup/                      # Section 00
 │   └── 00_Setup_and_Orientation.ipynb
 ├── 01_WhyPassiveRAGBreaks/        # Section 01
@@ -119,6 +123,8 @@ AgenticRAGLab/
 │   └── 05_Evaluation.ipynb
 ├── 06_Synthesis/                  # Section 06
 │   └── 06_Synthesis.ipynb
+├── 07_Bonus_AgentLoopWithEmbeddings/  # Section 07 (bonus)
+│   └── 07_Bonus_Agent_Loop_with_Embeddings.ipynb
 └── extras/
     └── WhatsNext.ipynb            # Post-lab guide: production concerns, further reading
 ```
